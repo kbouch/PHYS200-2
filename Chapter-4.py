@@ -27,6 +27,7 @@ kyle = Turtle()
 print kyle
 
 # square
+kyle.delay = 0.01
 fd(kyle,100)
 lt(kyle)
 fd(kyle,100)
@@ -46,6 +47,8 @@ for i in range(4):
 # I found that you can clear the turtle world drawing board by using the
 # function wait_for_user() and then re-importing TurtleWorld and redifining
 # the variables world and the turtle's name, and reprinting the turtle.
+# just close the TurtleWorld window when the animation stops, and the next
+# one will open.
 wait_for_user()
 from TurtleWorld import *
 world = TurtleWorld()
@@ -57,11 +60,11 @@ def square(t,l):
     for i in range(4):
         fd(t,l)
         lt(t)
-square(kyle,10)
-square(kyle,20)
-square(kyle,30)
-square(kyle,50)
-square(kyle,100)
+#square(kyle,10)
+#square(kyle,20)
+#square(kyle,30)
+#square(kyle,50)
+#square(kyle,100)
 
 wait_for_user()
 from TurtleWorld import *
@@ -70,6 +73,7 @@ kyle = Turtle()
 print kyle
 
 def polygon(t,l,n):
+    t.delay = 0.01
     for i in range(n):
         lt(t,360.0/n)
         fd(t,l)
@@ -84,17 +88,19 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-# I enjoyed working on this problem. My circles are modeled as polygons with
-# sides that are less than or equal to 10 turtle steps in length.
+# My circles are modeled as a polygon with n sides so that radius/length of
+# side = specified constant. In this case, k = 50.
 def circle(t,r):
+    t.delay = 0.01
     import math
-    theta = 10.0/r #angle at tip of the 'pie wedges', at center of the circle 
-    n = math.ceil((2*math.pi)/theta) # number of wedges (sides) to go around, rounded up to nearest integer
-    worktheta = 360.0/n # now i am in degrees, and this number will work with my n rounded to an integer (rounded up so that sides are <= 10 steps long)
-    alpha = 180-worktheta # interiror polygon angle
-    l = 2*(r/math.atan(alpha/2))
+    alpha = 2*math.acos(1/(2.0*(50))) # gives radians
+    theta = math.pi-alpha
+    n = math.ceil((2*math.pi)/alpha)
+    worktheta = (2*math.pi)/float(n)
+    workalpha = math.pi-worktheta
+    l = 2*r*math.cos(workalpha/2) # takes radians
     for i in range(int(n)):
-        lt(t,360.0/n)
+        lt(t,worktheta*(180/math.pi)) # takes degrees
         fd(t,l)
 
 circle(kyle,20)
