@@ -88,24 +88,40 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-# My circles are modeled as a polygon with n sides so that radius/length of
-# side = specified constant. In this case, k = 50.
-def circle(t,r):
+# I finally fixed my symantic errors for circle! It models a circle as a
+# polygon. The number of sides used is enough to ensure that the ratio
+# radius / side length = specified constant.
+# My function takes 3 parameters: turtle name, radius, and accuracy constant.
+# The larger the constant, the more acurate the circle. k >= 1 .
+# If k < 1, only one line is drawn. If k < 0, no lines appear (n = 0).
+# Higher accuracy takes more time to draw.
+def circle(t,r,k):
     t.delay = 0.01
     import math
-    alpha = 2*math.acos(1/(2.0*(50))) # gives radians
+    alpha = 2*math.acos(1/(2.0*(k))) # gives radians
     theta = math.pi-alpha
-    n = math.ceil((2*math.pi)/alpha)
+    n = math.ceil((2*math.pi)/theta)
     worktheta = (2*math.pi)/float(n)
     workalpha = math.pi-worktheta
     l = 2*r*math.cos(workalpha/2) # takes radians
     for i in range(int(n)):
         lt(t,worktheta*(180/math.pi)) # takes degrees
         fd(t,l)
+    pu(t)
+    lt(t,90)
+    fd(t,r)
+    lt(t,180)
+    pd(t)
+    fd(t,1)
+    pu(t)
+    fd(t,r-1)
+    lt(t,90)
+    pd(t)
 
-circle(kyle,20)
-circle(kyle,30)
-circle(kyle,40)
+
+circle(kyle,20,50)
+circle(kyle,30,10)
+circle(kyle,40,30)
 
 wait_for_user()
 
