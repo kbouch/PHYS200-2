@@ -57,14 +57,15 @@ print kyle
 
 # Section 4.3 Excercises
 def square(t,l):
+    t.delay = 0.001
     for i in range(4):
         fd(t,l)
         lt(t)
-#square(kyle,10)
-#square(kyle,20)
-#square(kyle,30)
-#square(kyle,50)
-#square(kyle,100)
+square(kyle,10)
+square(kyle,20)
+square(kyle,30)
+square(kyle,50)
+square(kyle,100)
 
 wait_for_user()
 from TurtleWorld import *
@@ -124,4 +125,46 @@ circle(kyle,30,10)
 circle(kyle,40,30)
 
 wait_for_user()
+from TurtleWorld import *
+world = TurtleWorld()
+kyle = Turtle()
+print kyle
 
+# The only thing different about this function from circle is that it takes
+# a parameter 'a' 
+def arc(t,r,a,k):
+    t.delay = 0.01
+    import math
+    alpha = 2*math.acos(1/(2.0*(k))) # gives radians
+    theta = math.pi-alpha
+    n = math.ceil((a*(math.pi/180))/theta)
+    print n
+    worktheta = (a*(math.pi/180))/float(n)
+    workalpha = math.pi-worktheta
+    l = 2*r*math.cos(workalpha/2) # takes radians
+    for i in range(int(n)):
+        lt(t,worktheta*(180/math.pi)) # takes degrees
+        fd(t,l)
+    # this code returns the turtle to its starting position (needs to be
+    # fixed)
+    #backx = 0
+    #for i in range(int(n)):
+    #    backx = backx + (l*math.cos(i*worktheta))
+    #backy = 0
+    #for i in range(int(n)):
+    #    backy = backy + (l*math.sin(i*worktheta))
+    #backr = math.sqrt((backx**2)+(backy**2))
+    #lt(t,(180/math.pi)*(worktheta-((math.pi/2)-math.atan(backx/backy))))
+    #pu(t)
+    #fd(t,backr)
+    #lt(t,(180/math.pi)*((math.pi/2)-math.atan(backx/backy)))
+    #pd(t)
+
+arc(kyle,50,180,40)
+arc(kyle,30,270,40)
+
+wait_for_user()
+from TurtleWorld import *
+world = TurtleWorld()
+kyle = Turtle()
+print kyle
