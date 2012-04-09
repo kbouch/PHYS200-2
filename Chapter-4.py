@@ -129,7 +129,7 @@ def circle(t,r,k):
 
 circle(kyle,20,30)
 circle(kyle,30,10)
-circle(kyle,40,30)
+circle(kyle,40,20)
 
 wait_for_user()
 from TurtleWorld import *
@@ -172,8 +172,8 @@ def arc(t,r,a,k):
 #lt(t,(180/math.pi)*((math.pi/2)-math.atan(backx/backy)))
 #pd(t)
 
-arc(kyle,50,180,40)
-arc(kyle,30,270,40)
+arc(kyle,50,180,20)
+arc(kyle,30,270,20)
 
 wait_for_user()
 
@@ -212,7 +212,7 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-flower(kyle,3,50,30)
+flower(kyle,3,50,10)
 
 wait_for_user()
 from TurtleWorld import *
@@ -220,7 +220,7 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-flower(kyle,5,100,30)
+flower(kyle,5,50,10)
 
 wait_for_user()
 from TurtleWorld import *
@@ -228,7 +228,7 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-flower(kyle,8,100,30)
+flower(kyle,8,50,10)
 
 wait_for_user()
 from TurtleWorld import *
@@ -236,6 +236,35 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
-flower(kyle,12,100,30)
+# 3. Polygon with wedges
+def polyseg(t,n,l):
+    lt(t,360.0/n)
+    fd(t,l)
+
+def piepolygon(t,n,l):
+    import math
+    t.delay = 0.01
+    pd(t)
+    for i in range(n):
+        lt(t,-(90-(180.0/n)))
+        fd(t,l/math.cos(90*(1-(2/n))))
+        rt(t,180)
+        fd(t,l/math.cos(90*(1-(2/n))))
+        lt(t,-(360-(90-(180.0/n))))
+        polyseg(t,n,l)
+        
+
+piepolygon(kyle,9,20)
 
 wait_for_user()
+from TurtleWorld import *
+world = TurtleWorld()
+kyle = Turtle()
+print kyle
+
+# Design a font
+
+
+
+
+
