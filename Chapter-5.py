@@ -89,23 +89,51 @@ def draw(t, length, n):
 #draw(kyle,10,5)
 
 wait_for_user()
+
+# Ex 5.4
 from TurtleWorld import *
 world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
+# I made this function, which drew something similar to the
+# koch curve, but was not correct.
 def koch(t,l,n):
+    t.delay = 0.01
     if n == 0:
         return
-    koch(t,l/3.0,n)
+    koch(t,l/3.0,n-1)
+    fd(t,l)
     lt(t,60)
-    koch(t,l/3.0,n)
-    lt(t,120)
-    koch(t,l/3.0,n)
+    fd(t,l)
+    koch(t,l/3.0,n-1)
+    fd(t,l)
+    rt(t,120)
+    fd(t,l)
+    koch(t,l/3.0,n-1)
+    fd(t,l)
     lt(t,60)
-    koch(t,l/3.0,n)
+    fd(t,l)
+    koch(t,l/3.0,n-1)
 
-#koch(kyle,10,10)
-# I don't understand how to do this
+
+
+#koch(kyle,50,5)
+
+# The solution was to put the forward function in the 'if' block
+
+def koch2(t,l,n):
+    if n == 0:
+        fd(t,l)
+        return
+    koch(t,l/3.0,n-1)
+    lt(t,60)
+    koch(t,l/3.0,n-1)
+    rt(t,120)
+    koch(t,l/3.0,n-1)
+    lt(t,60)
+    koch(t,l/3.0,n-1)
+
+#koch2(kyle,60,5)
 
 wait_for_user()
