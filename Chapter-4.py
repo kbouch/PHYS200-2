@@ -262,9 +262,83 @@ world = TurtleWorld()
 kyle = Turtle()
 print kyle
 
+import math
 # Design a font
 
+def dir_half_circ(t,r,turn):
+    a = 180
+    k = 10
+    t.delay = 0.01
+    import math
+    alpha = 2*math.acos(1/(2.0*(k))) # gives radians
+    theta = math.pi-alpha
+    n = math.ceil((a*(math.pi/180))/theta)
+    worktheta = (a*(math.pi/180))/float(n)
+    workalpha = math.pi-worktheta
+    l = 2*r*math.cos(workalpha/2) # takes radians
+    for i in range(int(n)):
+        turn(t,worktheta*(180/math.pi)) # takes degrees
+        fd(t,l)
 
+def drawA(t,h):
+    pd(t)
+    lt(t,90)
+    fd(t,3*(h/4.0))
+    rt(t,90)
+    fd(t,h/2.0)
+    rt(t,180)
+    fd(t,h/2.0)
+    rt(t,90)
+    dir_half_circ(t,h/4.0,rt)
+    fd(t,3*(h/4.0))
+    lt(t,90)
+    pu(t)
+    fd(t,h/8.0)
 
+def drawB(t,h):
+    pd(t)
+    lt(t,90)
+    fd(t,h)
+    rt(t,90)
+    fd(t,h/4.0)
+    dir_half_circ(t,h/4.0,rt)
+    fd(t,h/4.0)
+    rt(t,180)
+    fd(t,h/4.0)
+    dir_half_circ(t,h/4.0,rt)
+    fd(t,h/4.0)
+    lt(t,180)
+    pu(t)
+    fd(t,(h/2.0)+(h/8.0))
 
+def drawT(t,h):
+    pu(t)
+    fd(t,h/4.0)
+    pd(t)
+    lt(t,90)
+    fd(t,h)
+    lt(t,90)
+    fd(t,h/4.0)
+    lt(t,180)
+    fd(t,h/2.0)
+    pu(t)
+    rt(t,90)
+    fd(t,h)
+    lt(t,90)
+    fd(t,h/8.0)
 
+drawA(kyle,40)
+drawB(kyle,40)
+drawT(kyle,40)
+
+# I'll leave making the rest of the alphabet for later.
+
+wait_for_user()
+
+# range function
+# do>>> range?
+# range function is a list
+#>>>a = range()
+#>>>type(a)
+#out: list
+# for i in [any python list]
