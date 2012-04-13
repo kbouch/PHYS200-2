@@ -99,3 +99,87 @@ def factorialrecurse(n):
         return n*factorialrecurse(n-1)
 
 print factorialrecurse(20)
+
+# Section 6.7
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+print fibonacci(7)
+
+# Ex. 6.5
+def ack(m,n):
+    if m == 0:
+        return n + 1
+    if m > 0 and n == 0:
+        return ack(m-1,1)
+    if m > 0 and n > 0:
+        return ack(m-1,ack(m,n-1))
+print ack(3,4)
+
+# Ex. 6.6
+def first(word):
+    return word[0]
+def middle(word):
+    return word[1:-1]
+def last(word):
+    return word[-1]
+print middle('hi')
+print middle('a')
+print middle(' ')
+print last(' ')
+print first(' ')
+
+
+# These print nothing on the line
+
+print middle('kyle')
+
+def is_palindrome(word):
+    l = len(word)
+    if l == 1:
+        return True
+    elif l == 2 and first(word) == last(word):
+        return True
+    elif l == 2 and first(word) != last(word):
+        return False
+    elif first(word) == last(word):
+        return is_palindrome(middle(word))
+
+print is_palindrome('noon')
+
+# Ex. 6.7
+def is_power(a,b):
+    if a % b == 0:
+        if a / b == 1:
+            return True
+        elif (a/b) % b == 0:
+            return True
+        elif (a/b) % b != 0:
+            return False
+    else:
+        return False
+
+print is_power(64,4)
+print is_power(64,8)
+print is_power(21,3)
+
+# Ex. 6.8
+def gcd(a,b):
+    if a < 0 or b < 0:
+        print 'a and b must be positive integers'
+        return
+    elif a == 0:
+        return b
+    elif b == 0:
+        return a      
+    r = a % b
+    return gcd(b,r)
+
+print gcd(124,160)
+print gcd(60,20)
+print gcd(-4,2)
+print gcd(0,45)
