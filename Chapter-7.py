@@ -31,6 +31,7 @@ def print_n(s,n):
 print_n('Hello',5)
 
 # Section 7.5 Square roots
+# Ex. 7.2
 def approx_sqrt(a,g):
     """ Returns the aproximation of the square root of the first parameter accurate to ten decimal places. The second parameter is your guess of what the square root is.
     """
@@ -45,3 +46,15 @@ def approx_sqrt(a,g):
         g = m
 
 print approx_sqrt(38,6)
+
+# Ex. 7.4
+def eval_loop():
+    while True:
+        r = raw_input('Mathematical expression = ')
+        if r == 'done' or r == 'Done':
+            break
+        print eval(r)
+    print 'Done!'
+    return
+
+eval_loop()
