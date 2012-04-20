@@ -85,10 +85,11 @@ def is_palindrome(word):
 print is_palindrome('noon')
 
 # Ex. 8.10
-word = '            s p a  c   e    d         out           '
+word = '            s p a  c   e    d         out           !'
 print word
-new_word = word.lstrip().replace(' ','') 
+new_word = word.strip().replace(' ','') 
 # I can use multiple methods in one line
-# Note: strip() method only removes leading and trailing instances of
-# the given characters
-print 'not '+new_word.replace('out','')
+# Note: lstrip() and rstrip() methods only removes leading or
+# trailing instances of the given characters
+# use strip() to remove all instances
+print 'not '+new_word.replace('out','').replace('!','')
