@@ -60,7 +60,17 @@ print word
 word = word.replace('a','').replace('e','')
 print word
 
-another = 
+another = 'casssssshhh'
+print another.format('a',{'@'}) # I thought this would work...
 
+print '-'.join(['seven','year','old'])+' boy'
+# the argument of join must be a single iterable
 
+print another.find('h',2)
+
+print 'yellow' > 'orange'
+print 'Yellow' > 'orange'
+print 'greEn' > 'green'
+# later letters are greater, but capital letters have lower values
+# than lower case in their code representation.
 
