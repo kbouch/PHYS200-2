@@ -101,5 +101,26 @@ def encode(s):
 
 print encode('Kyle')
 print encode(encode('Kyle'))
+# yes! it works, let's try to improve it
+
+def encode_2(s):
+    t =''
+    for i in range(len(s)):
+        a = ord(s[i])
+        if a > 90:
+            b = a + 13 +((a+13)/122)*(-1*(13+a)+96+((a+13)-122))
+        if a <= 90:
+            b = a + 13 +((a+13)/90)*(-1*(13+a)+64+((a+13)-90))
+        t = t[:i+1]+chr(b)
+    return t
+
+print encode_2('Whale')
+print encode_2(encode_2('Whale'))
+#!!!!!!! Remeber that side by side parentheses-enclosed expressions
+# do not multiply like on a calculator. I must use * as in (a)*(b).
+# !!!!!!!
+# I made use of floor division here, or I could have divided
+# by floats 122.0 and 90.0 and used math.floor()
+
 # Moving on to chapter 9
 
