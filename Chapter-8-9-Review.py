@@ -124,3 +124,69 @@ print encode_2(encode_2('Whale'))
 
 # Moving on to chapter 9
 
+import sys
+sys.path.append('/home/kyle/Downloads/epd-7.2-2-rh5-x86/lib/python2.7/site-packages/swampy-2.0')
+
+fin = open('words.txt')
+print fin
+
+def wordlenpick(l):
+    fin = open('words.txt')
+    flag = 'AA'
+    while flag < 'zymurgieA':
+        line = fin.readline()
+        word = line.strip()
+        if len(word)>=l:
+            print word
+        flag = word
+
+wordlenpick(20)
+# The results are:
+# counterdemonstration
+# counterdemonstrations
+# counterdemonstrators
+# hyperaggressivenesses
+# hypersensitivenesses
+# microminiaturization
+# microminiaturizations
+# representativenesses
+
+def has_no_e(s):
+    for c in s:
+        if c=='e' or c=='E':
+            return False
+    return True
+
+def avoids(s,a):
+    for element in a:
+        for c in s:
+            if c == element:
+                return False
+    return True
+
+def words_that_avoid(a): # uses previously defined program avoids()
+    fin = open('words.txt')
+    flag = 'AA'
+    while flag < 'zymurgieA':
+        line = fin.readline()
+        word = line.strip()
+        if avoids(word,a):
+            print word
+        flag = word
+
+words_that_avoid(['a','e','i','o','u'])
+print 'Next output'
+words_that_avoid(['a','e','i','o','u','y'])
+
+def uses_only(a):
+    fin = open('words.txt')
+    flag = 'AA'
+    while flag < 'zymurgieA':
+        line = fin.readline()
+        word = line.strip()
+        for element in a:
+            for c in word:
+                if not c == element:
+                    
+        
+uses_only(['a','g','n','t','v','e']
