@@ -1,3 +1,4 @@
+# Chapter 8
 # String slice practice
 word = 'octopus'
 print word[:]
@@ -34,7 +35,7 @@ print c == d
 # searching
 def find(c,s,b):
     n = 0
-    for i in s[b:]:
+    for i in s[b:]: # strings are iterables
         if i == c:
             n = n + 1
     if n > 0:
@@ -73,4 +74,32 @@ print 'Yellow' > 'orange'
 print 'greEn' > 'green'
 # later letters are greater, but capital letters have lower values
 # than lower case in their code representation.
+
+# rotation of letters encoding
+print ord('a')
+print ord('A')
+print ord('b')
+print ord('B')
+print ord('z'), ord('Z')
+
+def encode(s):
+    t =''
+    for i in range(len(s)):
+        a = ord(s[i])
+        if a > 90:
+            if a + 13 >= 122:
+                b = 96 + ((a+13)-122)
+            else:
+                b = a + 13
+        if a <= 90:
+            if a + 13 >= 90:
+                b = 64 + ((a+13)-90)
+            else:
+                b = a + 13
+        t = t[:i+1]+chr(b)
+    return t
+
+print encode('Kyle')
+print encode(encode('Kyle'))
+# Moving on to chapter 9
 
