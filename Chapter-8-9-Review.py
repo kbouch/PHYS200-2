@@ -140,6 +140,7 @@ def wordlenpick(l):
             print word
         flag = word
 
+print 'These words are twenty or more letters long'
 wordlenpick(20)
 # The results are:
 # counterdemonstration
@@ -173,9 +174,9 @@ def words_that_avoid(a): # uses previously defined program avoids()
         if avoids(word,a):
             print word
         flag = word
-
+print 'These words do not contain vowels'
 words_that_avoid(['a','e','i','o','u'])
-print 'Next output'
+print 'These "words" do not contain vowels or the letter y'
 words_that_avoid(['a','e','i','o','u','y'])
 
 def uses_only(a):
@@ -184,9 +185,32 @@ def uses_only(a):
     while flag < 'zymurgieA':
         line = fin.readline()
         word = line.strip()
-        for element in a:
-            for c in word:
-                if not c == element:
-                    
-        
-uses_only(['a','g','n','t','v','e']
+        strength = 0
+        for c in word:
+            if c in a:
+                strength = strength + 1
+        if strength == len(word):
+            print word
+        flag = word
+print 'These words use only: a,e,g,n,y,v.'
+uses_only(['a','g','n','t','v','e'])
+
+# Skipping the abecadarian exercise....to end of chapter exercises
+
+# Ex. 9.7
+def find_three_consec_double():
+    fin = open('words.txt')
+    flag = 'AA'
+    while flag < 'zymurgieA':
+        line = fin.readline()
+        word = line.strip()
+        if len(word) >= 6:
+            for i in range(len(word)-6):
+                if word[i] == word[i+1] and word[i+2] == word[i+3] and word[i+4] == word[i+5]:
+                    print word
+        tflag = word
+
+print 'The solution to CarTalk three consecutive double letters is:'
+find_three_consec_double()
+
+print 'My friend Nat Hendel once named his fantasy football team the Raccoonnookkeepers'
