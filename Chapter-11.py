@@ -10,7 +10,9 @@ def make_dict(d):
     while True:
         line = fin.readline()
         word = line.strip()
-        if word in d:
+        if word in d:  # this is so that once I get back to the
+# begging of the file, the first word is already in the dictionary
+# and the while loop breaks.
             break
         d[word] = len(word)
 
