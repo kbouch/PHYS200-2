@@ -54,7 +54,7 @@ use_walk('/home/kyle/PHYS200-2')
 
 # Ex. 14.3
 
-def match_anagrams():
+def create_match_anagrams_db():
     import string
     fin = open('words.txt')
     anagdict = {}
@@ -63,19 +63,22 @@ def match_anagrams():
 # in a list as the value, with the key a list of the letters used in
 # alphabetical order
         word = fin.readline().strip()
-        print word
         letterlist = list(word)
         letterstring = ''
         letterlist.sort()
-        print letterlist
         for e in letterlist:
             letterstring = letterstring + e
         anagdict.setdefault(letterstring,[]).append(word)
         flag = word
-#    import anydbm
-#    anagdb = anydbm.open('anagramdata.db','c')
-#    for k in anagdict:
-#        if len(anagdict[k]) > 1:
-            
+    go = raw_input('Do you wish to view the matched anagrams? ')      
+    import anydbm
+    import pickle
+    anagdb = anydbm.open('anagramdata.db','c')
+    for k in anagdict:
+        if len(anagdict[k]) > 1:
+            anagdb[k] = pickle.dumps(anagdict[k])
+            if go == 'Yes' or go == 'yes':
+                print anagdict[k]
+    anagdb.close()
 
-match_anagrams()
+create_match_anagrams_db()
