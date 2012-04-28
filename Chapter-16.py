@@ -86,3 +86,23 @@ print_time(purefn_increment(tB,15000))
 print '\n'
 print 'original object is unchanged:'
 print_time(tB)
+
+
+# Ex. 16.5
+
+def time_to_int(t1):
+    amass_seconds = (60**2)*t1.hour + 60*t1.minute + t1.second
+    return amass_seconds
+
+def int_to_time(n):
+    rest = Time()
+    (raw_minute, rest.second) = divmod(n,60.0)
+    (rest.hour, rest.minute) = divmod(raw_minute,60.0)
+    return rest
+
+def purefn_base60_increment(t1,dt):
+    n = time_to_int(t1) + dt
+    return int_to_time(n)
+
+print '\n','output by the increment function that converts time to seconds only, then increments, and converts back to hour, minute second'
+print_time(purefn_base60_increment(tC,-9000))
