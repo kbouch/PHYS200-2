@@ -84,6 +84,7 @@ def create_match_anagrams_db():
 create_match_anagrams_db()
 
 # Ex. 14.4
+
 # Here are my inputs and outputts using the python interpreter
 # I will add the files wc.py and words.txt to my git repository.
 
@@ -100,3 +101,39 @@ create_match_anagrams_db()
 # interpreter like it did when I ran wc.py as a script?
 # it seems that __name__ == __main__ always, but when you import
 # a module into the interpreter, it does not execute commands.
+
+
+# Ex. 14.5
+def reveal_secret():
+    import urllib
+    conn = urllib.urlopen('http://thinkpython.com/secret.html')
+    for line in conn.fp:
+        print line.strip()
+
+reveal_secret()
+
+def zipcode_info():
+    import urllib
+    import string
+    code = raw_input('Type any zipcode: ')
+    conn = urllib.urlopen('http://www.uszip.com/zip/'+str(code))
+    population = ''
+    city = ''
+    for line in conn.fp:
+        if 'searcher.execute' in line: # assuming the developer was consitent in notation for each zipcode page...
+            line = line.strip()
+            city = line[19:-4]
+    for line in conn.fp:
+        if 'Population:' in line:
+            line = line.strip()
+            for i in range(0,len(line)):
+                if line[i:i+3] == '<td>':
+                    for j in range(i+4,len(line)):
+                        if line[j] == '<':
+                            population = line[i+4:j]
+                            break
+                    break
+
+    print 'The zipcode '+str(code)+' is for the settlement '+city+', which has a polulation of '+population+' .'
+
+zipcode_info()
