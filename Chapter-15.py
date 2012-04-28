@@ -60,3 +60,26 @@ rectangle2 = move_rectangle(new_rectangle,-36,200)
 print rectangle2.width
 print rectangle2.height
 print (rectangle2.corner.x, rectangle2.corner.y)
+
+
+# Ex. 15.3
+
+def copy_move_rectangle(r,dx,dy):
+    import copy
+    newr = copy.deepcopy(r)
+    newr.corner.x += dx
+    newr.corner.y += dy
+    return newr
+
+far_rectangle = rectangle()
+far_rectangle.width = 50
+far_rectangle.height = 20
+far_rectangle.corner = point()
+far_rectangle.corner.x = 1000
+far_rectangle.corner.y = 5000
+
+
+near_rectangle = copy_move_rectangle(far_rectangle,(-far_rectangle.corner.x),(-far_rectangle.corner.y))
+
+print near_rectangle.corner.x
+print near_rectangle.corner.y
