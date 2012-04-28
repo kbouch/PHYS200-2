@@ -123,17 +123,18 @@ def zipcode_info():
         if 'searcher.execute' in line: # assuming the developer was consitent in notation for each zipcode page...
             line = line.strip()
             city = line[19:-4]
+    conn = urllib.urlopen('http://www.uszip.com/zip/'+str(code))
     for line in conn.fp:
         if 'Population:' in line:
             line = line.strip()
             for i in range(0,len(line)):
-                if line[i:i+3] == '<td>':
+                if line[i:i+4] == '<td>':
                     for j in range(i+4,len(line)):
                         if line[j] == '<':
                             population = line[i+4:j]
                             break
                     break
 
-    print 'The zipcode '+str(code)+' is for the settlement '+city+', which has a polulation of '+population+' .'
+    print 'The zipcode '+str(code)+' is for the settlement '+city+', which has a polulation of '+population+'.'
 
 zipcode_info()
