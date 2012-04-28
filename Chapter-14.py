@@ -82,3 +82,21 @@ def create_match_anagrams_db():
     anagdb.close()
 
 create_match_anagrams_db()
+
+# Ex. 14.4
+# Here are my inputs and outputts using the python interpreter
+# I will add the files wc.py and words.txt to my git repository.
+
+# >>> import wc
+# >>> print wc
+# <module 'wc' from 'wc.py'>
+# >>> print wc.linecount('words.txt')
+# 113809
+# >>> print __name__
+# __main__
+
+# I thought that __name__ != __main__ when I import wc to the
+# interpreter????? Why didn't my conditional execute in the
+# interpreter like it did when I ran wc.py as a script?
+# it seems that __name__ == __main__ always, but when you import
+# a module into the interpreter, it does not execute commands.
