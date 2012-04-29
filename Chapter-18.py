@@ -89,8 +89,13 @@ class Deck(object):
         # Card class. This is also a modifier
 
     def deal_hands(self, hnum, cnum):
-        pass
-
+        res = []
+        for i in range(hnum):
+            newhand = Hand()
+            for j in range(cnum):
+                newhand.cards.append(self.pop_card())
+            res.append(newhand)
+        return res
 
 
 deck1 = Deck()
@@ -120,5 +125,13 @@ class Hand(Deck):
         self.label = label
         self.cards = []
 
+deck2 = Deck()
+deck2.shuffle()
+[Bob, Joe, Jane, Kate] = deck2.deal_hands(4,13)
 
+print '\n'
+print "Bob's hand:\n",Bob,'\n'
+print "Joe's hand:\n",Joe,'\n'
+print "Jane's hand:\n",Jane,'\n'
+print "Kate's hand:\n",Kate,'\n'
 
