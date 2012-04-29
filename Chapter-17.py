@@ -68,7 +68,7 @@ print here.y
 print here.z
 
 
-# Ex. 17.3
+# Ex. 17.3  Add a method to the Point class
 
 class Point(object):
     def __init__(self,x=0.0,y=0.0,z=0.0):
@@ -83,7 +83,7 @@ place = Point(14.0,32.0,1.0)
 print place
 
 
-# Ex. 17.4
+# Ex. 17.4  Adding another method to the point class
 
 class Point(object):
     def __init__(self,x=0.0,y=0.0,z=0.0):
@@ -117,7 +117,7 @@ B = Point(19.7,12.6,-42.0)
 print A + B
 
 
-# Ex. 17.5
+# Ex. 17.5 Adding even more methods to Point class
 
 class Point(object):
     def __init__(self,x=0.0,y=0.0,z=0.0):
